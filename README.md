@@ -6,6 +6,6 @@ requirements
 
 ``` Install opencv by running : pip3 install -r requirements.txt```
 
-1. Creat a Empty data folder.
+1. Creat a Empty folder named "data". in the main Directory of repo..
 2. then run ```python3 Full_Face_Detection.py``` It will create sample images in the data folder.
 3. Then run ```python3 detector.py``` it will show the Id,name,record of the detected face if it is on database.
