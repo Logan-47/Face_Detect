@@ -4,7 +4,7 @@ import cv2
 import sqlite3
 from PIL import Image
 
-dtct=cv2.CascadeClassifier('XML\\haarcascade_frontalface_default.xml') #cascade classifier object
+dtct=cv2.CascadeClassifier('haarcascade_frontalface_default.xml') #cascade classifier object
 webcam=cv2.VideoCapture(0) # video capture object
 
 #function to take inputs
