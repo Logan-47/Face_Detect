@@ -1,5 +1,5 @@
 # Face_Detect
-A basic Face_Detection program in Python using OpenCV.
+A Simple Face_Detection program in Python using OpenCV.
 
 requirements
 > SQLlite database. the given database `face_database.db` is SQLlite database. it will store the data/records.
