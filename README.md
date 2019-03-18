@@ -11,3 +11,4 @@ requirements
 3. Then run ```python3 detector.py``` it will show the Id,name,record of the detected face if it is on database.
 
 #### it also have PushBullet API support.[used in instant notification if any face that is in the database is detected]
+> to use the pushbullet API go in ```detector.py``` and uncomment the pushbullet API code and put you API key in place of the "API KEY"
