@@ -3,22 +3,24 @@ import cv2
 import sqlite3
 #from pushbullet import PushBullet
 
-dtct= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+cascade_classifier_file_path='haarcascade_frontalface_default.xml' 
+load_file_path = './recognizer/trainning.yml'
+DB_name = "face_database.db"
+
+dtct= cv2.CascadeClassifier(cascade_classifier_file_path)
 webcam = cv2.VideoCapture(0)
 rec=cv2.face.LBPHFaceRecognizer_create() #Recognizer Object using Opencv library.
 try:
-    rec.read('./recognizer/trainning.yml') # load data from database.
+    rec.read(load_file_path) # load data from database.
 except:
     rec.read('recognizer\\trainning.yml') # load data from database.
-
-
 
 id=0
 mssg=0
 previd=0
 def record_data(id):
-    connection=sqlite3.connect("face_database.db")
-    command="SELECT * FROM Records WHERE id="+str(id)
+    connection=sqlite3.connect(DB_name)
+    command=f"SELECT * FROM Records WHERE id={id}"
     pointer=connection.execute(command)
     record=None
     for row in pointer:
@@ -50,16 +52,16 @@ while(True):
                  age_S = str(record[2])
                  record_S = str(record[3])
                  Id_S = str(record[0]) 
-                 cv2.putText(img,"ID:"+str(record[0]),(x,y+h+20),font,fontscale,fontcolor)
-                 cv2.putText(img,"Name:"+str(record[1]),(x,y+h+50),font,fontscale,fontcolor)
-                 cv2.putText(img,"Age:"+str(record[2]),(x,y+h+90),font,fontscale,fontcolor)
-                 cv2.putText(img,"Record:"+str(record[3]),(x,y+h+130),font,fontscale,fontcolor)
+                 cv2.putText(img,f"ID: {record[0]}",(x,y+h+20),font,fontscale,fontcolor)
+                 cv2.putText(img,f"Name: {record[1]}",(x,y+h+50),font,fontscale,fontcolor)
+                 cv2.putText(img,f"Age: {record[2]}",(x,y+h+90),font,fontscale,fontcolor)
+                 cv2.putText(img,f"Record: {record[3]}",(x,y+h+130),font,fontscale,fontcolor)
                  previd = record[0]
                  # Push Bullet API to send instant messages..
                  #if(mssg==1 and key==1):
                   #   mssg=0
                    #  key=0
-                    # pb = PushBullet("API key")
+                    # pb = PushBullet("API key") // you API key HERE
                      #pb.push_note("Face Recognized","ID"+Id_S+"\n Name:"+name_S+"\n Age:"+age_S+"\n record:"+record_S)
                      #"""with open("photo.jpg", "rb") as pic:
                      #file_data = pb.upload_file(pic, "photo.jpg")

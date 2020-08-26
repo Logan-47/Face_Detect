@@ -1,14 +1,14 @@
 # Face_Detect
-A Simple Face_Detection program in Python using OpenCV.
 
-requirements
-> SQLlite database. the given database `face_database.db` is SQLlite database. it will store the data/records.
+A Face Detection System built using Python, OpenCV, and SQL.
 
-``` Install opencv by running : pip3 install -r requirements.txt```
+`Install all the dependencies by running : pip install -r requirements.txt`
 
-1. Creat a Empty folder named "data". in the main Directory of repo..
-2. then run ```python3 Full_Face_Detection.py``` It will scan the face and create sample images in the data folder.
-3. Then run ```python3 detector.py``` it will show the Id,name,record of the detected face if it is on database.
+> `face_database.db` is provided You can clear that DB first and can use it.
 
-#### it also have PushBullet API support.[used in instant notification if any face that is in the database is detected]
-> to use the pushbullet API go in ```detector.py``` and uncomment the pushbullet API code and put you API key in place of the "API KEY"
+1. First run `python Full_Face_Detection.py` It will scan the face and create sample images inside the data directory.
+1. Then run `python3 detector.py` it will show the Id,name,record of the detected face if it is present in the database.
+
+#### it also have PushBullet API support.[used for instant notification if any face that is in the database is detected]
+
+> to use the pushbullet API go in `detector.py` and uncomment the pushbullet API code and put you API key in place of "API KEY"
